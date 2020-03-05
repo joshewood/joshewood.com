@@ -1,0 +1,8 @@
+{
+  "name": "joshewood.com",
+  "version": "1.0.0",
+  "main": "entry.js",
+  "repository": "https://github.com/joshewood/joshewood.com.git",
+  "author": "joshewood",
+  "license": "MIT"
+}
