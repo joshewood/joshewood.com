@@ -4,5 +4,8 @@
   "main": "entry.js",
   "repository": "https://github.com/joshewood/joshewood.com.git",
   "author": "joshewood",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "create-react-app": "^3.4.0"
+  }
 }
