@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #1E1B18;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #FFFAFF;
+}
+
+.AlignChildrenVertical {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+
+}
+
+.Accent {
+  color: #D8315B;
+  text-shadow: 2px 2px 0px #0A2463;
+}
+
+.WordCycler {
+  position: relative;
+  height: 1.4em;
+  width: 8em;
+  color: #0A2463;
+  display: inline-flex;
+  border-radius: 4em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8em;
+  transform-style: preserve-3d;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #FFFAFF;
+  padding: 0 0.4em;
+  margin: 0 0.4em;
+  white-space: nowrap;
+  top: 4px;
+  &.Settle {
+    animation: none;
+    .WordCyclePlane {
+      animation: none;
+    }
+  }
+}
+
+
+
+.WordCyclePlane {
+  animation: phase 1s infinite cubic-bezier(0.1, 0.51, 0.9, 0.63);
+}
+
+@keyframes phase {
+  0% { transform: translate(0, -2em); }
+  10% { transform: translate(0, 0); }
+  90%   { transform: translate(0, 0); }
+  100% {
+    transform: translate(0, 2em);
+  }
+}
