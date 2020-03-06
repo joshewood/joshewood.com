@@ -2,12 +2,63 @@
   transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63);
 }
 
+a {
+  color: #D8315B;
+  cursor: pointer;
+  text-decoration-color: #D8315B;
+  text-decoration-thickness: .125em;
+  text-underline-offset: 1.5px;
+}
+
 .App {
   text-align: center;
   user-select: none;
 }
 
+.ResumeContainer {
+  padding: 1em;
+  overflow: hidden;
+  &.Fade::before {
+    opacity: 0;
+    transform: scale(2);
+    transition-duration: all .2s cubic-bezier(0.1, 0.51, 0.9, 0.63);
+  }
+  &.Empty::before {
+    transition-duration: 0s;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0);
+    transform-origin: center;
+    background: hsla(345, 68%, 22%, 1);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 100%; 
+    opacity: 1;
+    transition-duration: all 0s;
+  }
 
+  &:hover {
+    cursor: pointer;
+    .MainCTA {
+      box-shadow: none;
+      outline: 6px solid #3E92CC;
+      color:  #3E92CC;
+      border-color: #D8315B;
+      text-shadow: 1px 1px 0 #222, -1px 1px 0 #222, 1px -1px 0 #222, -1px -1px 0 #222;  
+      letter-spacing: 8px;
+    }
+  }
+  &.Engaged:before {
+    transform: scale(2);
+    transition-duration: all .5s cubic-bezier(0.1, 0.51, 0.9, 0.63);
+  }
+}
 
 .IntroPanel {
   background-color: #1E1B18;
@@ -19,35 +70,6 @@
   font-size: calc(10px + 2vmin);
   color: #FFFAFF;
   animation: IntroThrob 30s infinite;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: scale(0);
-    transform-origin: center;
-    background: #D8315B;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 100%; 
-  }
-
-  &:hover {
-    cursor: pointer;
-    .MainCTA {
-      box-shadow: none;
-      outline: 6px solid #3E92CC;
-      color:  #3E92CC;
-      border-color: #D8315B;
-      text-shadow: 1px 1px 0 #222, -1px 1px 0 #222, 1px -1px 0 #222, -1px -1px 0 #222;      
-
-    }
-  }
-  &:active:before {
-    transform: scale(2);
-  }
 }
 
 .MainCTA {
@@ -62,10 +84,22 @@
   letter-spacing: 3px;
   text-shadow: 2px 2px 0 transparent;
   z-index: 2;    
+  position: relative;
+  cursor: pointer;
+  margin-top: 2em;
+  font-weight: 800;
+  width: 8em;
+  height: 2em;
+  transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63), letter-spacing 0.5s cubic-bezier(0.15, 0.46, 0.75, 1.13);
 }
 
 .SummaryPanel {
-  padding-top: 5vh;
+  padding: 5vh 0;
+
+  .Accent {
+    font-weight: 400;
+    text-shadow: 1px 1px 0 #222;
+  }
 }
 
 @keyframes IntroThrob {
@@ -104,7 +138,7 @@ h1 {
   align-items: center;
   overflow: hidden;
   background: #FFFAFF;
-  padding: 0 0.4em;
+  padding: 0 0.8em;
   margin: 0 0.4em;
   white-space: nowrap;
   top: 4px;
@@ -134,4 +168,10 @@ h1 {
   100% {
     transform: translate(0, 2em);
   }
+}
+
+.WorkPanel {
+  padding: 5vh 0;
+  background: #222;
+  color: #FFFAFF; 
 }

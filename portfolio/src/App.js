@@ -1,14 +1,30 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, useMemo  } from 'react';
 import logo from './logo.svg';
 import './App.scss';
 
-const adjectives = ['thoughtful', 'creative', 'caring', 'passionate', 'humble', 'perceptive', 'friendly', 'web', 'game', 'versatile', 'positive', 'professional', 'resourceful', 'front-end', 'back-end', 'senior'];
+const adjectives = [
+  'thoughtful', 'creative', 'persistent', 
+  'passionate', 'software', 'humble', 
+  'perceptive', 'friendly', 'web', 
+  'game', 'versatile', 'positive', 
+  'professional', 'resourceful', 'front-end', 
+  'back-end', 'senior', 'driven'
+];
 const consumeAdjective = () => adjectives.sort(() => { return 0.5 - Math.random();}).pop();
 const isAnimationComplete = () => (adjectives.length === 0);
 function App() {
-  
   const [currentAdjective, setAdjective] = useState(consumeAdjective());
   const [fastForward, setFastForward] =  useState(false);
+  const [CTAEffect, changeCTAEffect] = useState('Empty');
+  let downloadResume = () => {
+    changeCTAEffect('Engaged');
+    setTimeout(()=> {
+      changeCTAEffect('Fade');
+      setTimeout(()=> {
+        changeCTAEffect('Empty');
+      }, 500)
+    }, 800)
+  };
   useEffect(() => {
     let iteration = 0;
     let interval;
@@ -34,10 +50,10 @@ function App() {
   return (
     <div className="App">
       <div className="IntroPanel">
-        <div className="ResumeContainer">
-          <h1>Hey, I'm <span className="Accent">Josh</span>.</h1>
+        <div className={`ResumeContainer ${CTAEffect}`} onClick={downloadResume}>
+          <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
           <h2 className="AlignChildrenVertical">
-            <span>I'm a </span>
+            <span>and I'm a </span>
             <span className={`WordCycler${(isAnimationComplete()) ? ' Settle' : ''}${(fastForward) ? ' FastForward' : ''}`}>
               <span className="WordCyclePlane">{currentAdjective}</span>
             </span> 
@@ -48,14 +64,16 @@ function App() {
         </div>
       </div>
       <div className="SummaryPanel">
-        <h1>I have been <span className="Accent">building</span> software for most of my life.</h1>
+        <h1>I have been <span className="Accent">building</span> software my whole life.</h1>
         <h2>Love it when a <span className="Accent">plan</span> comes together.</h2>
         <h2>Worked alongside <span className="Accent">brilliant</span> people.</h2>
-        <h2>I love working on <span className="Accent">teams</span>.</h2>
+        <h2>Crave <span className="Accent">collaboration</span>.</h2>
       </div>
       <div className="WorkPanel">
-        <h1>I made www.dawnofwar.com</h1>
-        <h2>I delivered numerous features on www.hardrocksocialcasino.com</h2>
+        <h1>I made <a href="www.dawnofwar.com">www.dawnofwar.com</a></h1>
+        <h2>I delivered numerous features on <a href="www.hardrocksocialcasino.com">www.hardrocksocialcasino.com</a></h2>
+        <h3>The same engine as <a href="play.star.com.au">play.star.com.au</a></h3>
+        <h3>and <a href="online.foxwoods.com">online.foxwoods.com</a></h3>
         <h2>I've built</h2>
         <ul>
           <li>Features</li>
