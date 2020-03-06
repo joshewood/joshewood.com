@@ -1,7 +1,13 @@
+*, *::before, *:after {
+  transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63);
+}
+
 .App {
   text-align: center;
   user-select: none;
 }
+
+
 
 .IntroPanel {
   background-color: #1E1B18;
@@ -13,6 +19,53 @@
   font-size: calc(10px + 2vmin);
   color: #FFFAFF;
   animation: IntroThrob 30s infinite;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0);
+    transform-origin: center;
+    background: #D8315B;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 100%; 
+  }
+
+  &:hover {
+    cursor: pointer;
+    .MainCTA {
+      box-shadow: none;
+      outline: 6px solid #3E92CC;
+      color:  #3E92CC;
+      border-color: #D8315B;
+      text-shadow: 1px 1px 0 #222, -1px 1px 0 #222, 1px -1px 0 #222, -1px -1px 0 #222;      
+
+    }
+  }
+  &:active:before {
+    transform: scale(2);
+  }
+}
+
+.MainCTA {
+  background: #D8315B;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 1px #3E92CC;
+  color: #222;
+  font-size: 1.6em;
+  padding: 0.2em 0.8em;
+  outline: 6px solid #222;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 0 transparent;
+  z-index: 2;    
+}
+
+.SummaryPanel {
+  padding-top: 5vh;
 }
 
 @keyframes IntroThrob {
@@ -27,12 +80,13 @@
 }
 
 h1 {
-
+  font-weight: 400;
 }
 
 .Accent {
   color: #D8315B;
   text-shadow: 2px 2px 0px #0A2463;
+  font-weight: 800;
 }
 
 .WordCycler {
