@@ -175,3 +175,22 @@ h1 {
   background: #222;
   color: #FFFAFF; 
 }
+
+.DogPanel {
+  padding: 5vh 0;
+}
+
+.Doggo {
+  max-width: 100%;
+}
+
+@media (max-width: 695px) {
+  .AlignChildrenVertical {
+    flex-wrap: wrap;
+    justify-content: center;
+    > *:not(.WordCycler) {
+      display: block;
+      width: 100%;
+    }
+  }
+}

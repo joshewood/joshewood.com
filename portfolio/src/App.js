@@ -24,6 +24,8 @@ function App() {
         changeCTAEffect('Empty');
       }, 500)
     }, 800)
+
+    window.location.assign('resume.pdf');
   };
   useEffect(() => {
     let iteration = 0;
@@ -74,16 +76,17 @@ function App() {
         <h2>I delivered numerous features on <a href="www.hardrocksocialcasino.com">www.hardrocksocialcasino.com</a></h2>
         <h3>The same engine as <a href="play.star.com.au">play.star.com.au</a></h3>
         <h3>and <a href="online.foxwoods.com">online.foxwoods.com</a></h3>
-        <h2>I've built</h2>
+        {/*<h2>I've built</h2>
         <ul>
           <li>Features</li>
           <li>Tools</li>
           <li>Integrations</li>
           <li>Proofs of Concept</li>
-        </ul>
+        </ul>*/}
       </div>
       <div className="DogPanel">
         <h1>Also I love my dog.</h1>
+        <img className="Doggo" src="/zero.jpg"/>
       </div>
     </div>
   );
