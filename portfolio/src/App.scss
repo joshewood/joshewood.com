@@ -1,16 +1,24 @@
 .App {
   text-align: center;
+  user-select: none;
 }
 
-.App-header {
+.IntroPanel {
   background-color: #1E1B18;
-  min-height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FFFAFF;
+  animation: IntroThrob 30s infinite;
+}
+
+@keyframes IntroThrob {
+  0% { background: unquote("hsla(0, 20%, 14%, 1)")}
+  50% { background: unquote("hsla(180, 20%, 14%, 1)")}
+  100% { background: unquote("hsla(359, 20%, 14%, 1)")}
 }
 
 .AlignChildrenVertical {
@@ -46,6 +54,11 @@ h1 {
   margin: 0 0.4em;
   white-space: nowrap;
   top: 4px;
+  &.FastForward {
+    .WordCyclePlane {
+      animation-duration: 250ms;
+    }
+  }
   &.Settle {
     animation: none;
     .WordCyclePlane {
