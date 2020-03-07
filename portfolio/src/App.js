@@ -88,6 +88,21 @@ function App() {
         <h1>Also I love my dog.</h1>
         <img className="Doggo" src="/zero.jpg"/>
       </div>
+
+      <div className="ConnectPanel">
+        <h1>Let's chat</h1>
+        <ul className="SocialLinks">
+          <li>
+            <a href=""></a>
+          </li>
+          <li>
+            <a href=""></a>
+          </li>
+          <li>
+            <a href=""></a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
