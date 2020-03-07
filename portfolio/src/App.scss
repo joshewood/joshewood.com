@@ -197,3 +197,19 @@ h1 {
     }
   }
 }
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  li {
+    margin: 0 1em;
+  }
+}
+
+.ConnectPanel {
+  padding: 5vh 0;
+  background: #222;
+  color: #FFFAFF; 
+}

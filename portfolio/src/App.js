@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo  } from 'react';
 import logo from './logo.svg';
+import { SocialIcon } from 'react-social-icons';
+
 import './App.scss';
 
 const adjectives = [
@@ -90,17 +92,20 @@ function App() {
       </div>
 
       <div className="ConnectPanel">
-        <h1>Let's chat</h1>
+        <h1>Let's chat! We have so much in common!</h1>
         <ul className="SocialLinks">
           <li>
-            <a href=""></a>
+            <SocialIcon url="https://www.linkedin.com/in/agamedesigner/" />
           </li>
           <li>
-            <a href=""></a>
+            <SocialIcon url="https://www.facebook.com/josh.wood.12576" />
           </li>
           <li>
-            <a href=""></a>
+            <SocialIcon url="mailto:gdjoshwood@gmail.com" />
           </li>
+          <li>
+            <SocialIcon url="https://www.instagram.com/maremmazero/"/>
+            </li>
         </ul>
       </div>
     </div>
