@@ -15,6 +15,7 @@ const adjectives = [
 const consumeAdjective = () => adjectives.sort(() => { return 0.5 - Math.random();}).pop();
 const isAnimationComplete = () => (adjectives.length === 0);
 function App() {
+  const [entranceAnimation, beginEntrance] = useState(false);
   const [currentAdjective, setAdjective] = useState(consumeAdjective());
   const [fastForward, setFastForward] =  useState(false);
   const [CTAEffect, changeCTAEffect] = useState('Empty');
@@ -30,6 +31,7 @@ function App() {
     window.location.assign('resume.pdf');
   };
   useEffect(() => {
+    beginEntrance(true);
     let iteration = 0;
     let interval;
     const tick = () => {
@@ -53,7 +55,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <div className="IntroPanel">
+      <div className={`IntroPanel${(entranceAnimation) ? ' Enter' : ''}`}>
         <div className={`ResumeContainer ${CTAEffect}`} onClick={downloadResume}>
           <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
           <h2 className="AlignChildrenVertical">
@@ -74,10 +76,11 @@ function App() {
         <h2>Crave <span className="Accent">collaboration</span>.</h2>
       </div>
       <div className="WorkPanel">
-        <h1>I made <a href="www.dawnofwar.com">www.dawnofwar.com</a></h1>
-        <h2>I delivered numerous features on <a href="www.hardrocksocialcasino.com">www.hardrocksocialcasino.com</a></h2>
-        <h3>The same engine as <a href="play.star.com.au">play.star.com.au</a></h3>
-        <h3>and <a href="online.foxwoods.com">online.foxwoods.com</a></h3>
+        <video autoPlay loop mute src="dawnofwar.mp4"></video>
+        <h1>I made <a href="https://www.dawnofwar.com">www.dawnofwar.com</a></h1>
+        <h2>I delivered numerous features on <a href="https://www.hardrocksocialcasino.com">www.hardrocksocialcasino.com</a></h2>
+        <h3>The same engine as <a href="https://play.star.com.au">play.star.com.au</a></h3>
+        <h3>and <a href="https://online.foxwoods.com">online.foxwoods.com</a></h3>
         {/*<h2>I've built</h2>
         <ul>
           <li>Features</li>

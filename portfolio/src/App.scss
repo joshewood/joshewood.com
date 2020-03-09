@@ -61,7 +61,7 @@ a {
 }
 
 .IntroPanel {
-  background-color: #1E1B18;
+  position: relative;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,39 @@ a {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FFFAFF;
-  animation: IntroThrob 30s infinite;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1E1B18;
+    animation: IntroThrob 30s infinite;
+    transform: scale(0, 1);
+    transform-origin: center;
+    z-index: -2;
+    transition-duration: 3s;
+    transition-timing-function: cubic-bezier(0.24, -0.04, 1, -0.28);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #222, transparent 15%, transparent 85%, #222);
+    transform-origin: center;
+    z-index: -1;
+  }
+
+  &.Enter {
+    &:before {
+      transform: scale(1);
+    }
+  }
 }
 
 .MainCTA {
@@ -95,10 +127,21 @@ a {
 
 .SummaryPanel {
   padding: 5vh 0;
-
+  color: #fafafa;
+  position: relative;
   .Accent {
     font-weight: 400;
     text-shadow: 1px 1px 0 #222;
+  }
+
+  &::before {
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #3E92CC, transparent);
   }
 }
 
@@ -118,7 +161,7 @@ h1 {
 }
 
 .Accent {
-  color: #D8315B;
+  color: #3E92CC;
   text-shadow: 2px 2px 0px #0A2463;
   font-weight: 800;
 }

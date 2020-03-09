@@ -7,7 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-appearance: none;
--webkit-appearance: none;
+  -webkit-appearance: none;
+  background: #222;
+  transition: none;
 }
 
 button:focus {
