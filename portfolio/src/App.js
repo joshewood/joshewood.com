@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo  } from 'react';
 import logo from './logo.svg';
 import { SocialIcon } from 'react-social-icons';
-
+import initializeAnimation from './lib/animation/InitializeCanvas.js';
 import './App.scss';
 
 const adjectives = [
@@ -52,6 +52,8 @@ function App() {
       }
       tick();
     }, 1000)
+
+    //initializeAnimation();
   }, []);
   return (
     <div className="App">
