@@ -15,7 +15,7 @@ a {
   user-select: none;
 }
 
-.ResumeContainer {
+.CTAContainer {
   padding: 1em;
   overflow: hidden;
   &.Fade::before {
@@ -45,7 +45,7 @@ a {
 
   &:hover {
     cursor: pointer;
-    .MainCTA {
+    .HomeCTA {
       box-shadow: none;
       outline: 6px solid #3E92CC;
       color:  #3E92CC;
@@ -62,7 +62,7 @@ a {
 
 .IntroPanel {
   position: relative;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,7 +104,7 @@ a {
   }
 }
 
-.MainCTA {
+.HomeCTA {
   background: #D8315B;
   border: 1px solid transparent;
   box-shadow: 0px 0px 0px 1px #3E92CC;
@@ -125,6 +125,18 @@ a {
   transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63), letter-spacing 0.5s cubic-bezier(0.15, 0.46, 0.75, 1.13);
 }
 
+.BorderDecoration {
+  left: 0;
+  position: absolute;
+  transform: scale(0);
+  transform-origin: center;
+  bottom: 0;
+  border: none;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #3E92CC, transparent);
+}
+
 .SummaryPanel {
   padding: 5vh 0;
   color: #fafafa;
@@ -143,6 +155,12 @@ a {
     width: 100%;
     background: linear-gradient(to right, transparent, #3E92CC, transparent);
   }
+}
+
+.SecondaryCTA {
+  background: hsla(345, 28%, 52%, 1);
+  width: 12em;
+  z-index: 0;
 }
 
 @keyframes IntroThrob {
@@ -255,4 +273,10 @@ ul {
   padding: 5vh 0;
   background: #222;
   color: #FFFAFF; 
+}
+
+.Loaded {
+  .BorderDecoration {
+    transform: scale(1);
+  }
 }
