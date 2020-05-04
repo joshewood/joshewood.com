@@ -1,5 +1,5 @@
 *, *::before, *:after {
-  transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63);
+  transition: all .225s cubic-bezier(0.03, 1.24, 0.54, 1.24);
 }
 
 a {
@@ -13,11 +13,28 @@ a {
 .App {
   text-align: center;
   user-select: none;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;    
+    z-index: -1;
+    opacity: 0.2;
+    background: url('/backgrounds/app_background0.jpeg');
+    background-size: cover;
+  }
 }
 
 .CTAContainer {
+  position: relative;
   padding: 1em;
   overflow: hidden;
+  box-shadow: 1px 5px 6px 2px rgba(34, 34, 34, 0.4);
+  margin-top: 2em;
+  border-radius: 4px;
+  text-decoration: none;
   &.Fade::before {
     opacity: 0;
     transform: scale(2);
@@ -45,6 +62,14 @@ a {
 
   &:hover {
     cursor: pointer;
+    &:after {
+      opacity: 0.8;
+      filter: saturate(200%);
+    }
+
+    h1, h2, span {
+      animation: TextAttract 5s cubic-bezier(0.1, 0.51, 0.9, 0.63) infinite;
+    }
     .HomeCTA {
       box-shadow: none;
       outline: 6px solid #3E92CC;
@@ -57,6 +82,45 @@ a {
   &.Engaged:before {
     transform: scale(2);
     transition-duration: all .5s cubic-bezier(0.1, 0.51, 0.9, 0.63);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1);
+    transform-origin: center;
+    background: linear-gradient(to left, #5e1225, transparent, #5e1225);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-position-x: 0;
+    animation: BackgroundFlash 100s cubic-bezier(0.1, 0.51, 0.9, 0.63) infinite;
+  }
+}
+
+@keyframes TextAttract {
+  0% {
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes BackgroundFlash { 
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 20em;
   }
 }
 
@@ -160,7 +224,7 @@ a {
 .SecondaryCTA {
   background: hsla(345, 28%, 52%, 1);
   width: 12em;
-  z-index: 0;
+  z-index: 1;
 }
 
 @keyframes IntroThrob {
@@ -169,13 +233,18 @@ a {
   100% { background: unquote("hsla(359, 20%, 14%, 1)")}
 }
 
-.AlignChildrenVertical {
-  display: flex;
-  align-items: center;
-}
-
 h1 {
   font-weight: 400;
+  z-index: 1;
+  position: relative;
+}
+
+h2 {
+  z-index: 1;
+  position: relative;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
 }
 
 .Accent {

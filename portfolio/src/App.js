@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useMemo  } from 'react';
 import logo from './logo.svg';
 import { SocialIcon } from 'react-social-icons';
-import {
+import {  
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from "react-router-dom";
-import { AnimatedSwitch } from 'react-router-transition';
+import {
+  TransitionGroup,
+  CSSTransition
+} from "react-transition-group";
 import './App.scss';
 
 const adjectives = [
@@ -40,6 +44,7 @@ function App() {
   useEffect(() => {
     setHasLoaded(true);
     beginEntrance(true);
+    
     let iteration = 0;
     let interval;
     const tick = () => {
@@ -60,32 +65,32 @@ function App() {
       }
       tick();
     }, 1000)
-  }, []);
-  return (
-    <div className={`App${(hasLoaded) ? ' Loaded' : ''}`}>
-      <Router>
-        <AnimatedSwitch
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}
-          className="switch-wrapper"
+  }, []);  
+  let location = useLocation();
+  return (<div className={`App${(hasLoaded) ? ' Loaded' : ''}`}>
+      <TransitionGroup>
+        {/*
+          This is no different than other usage of
+          <CSSTransition>, just make sure to pass
+          `location` to `Switch` so it can match
+          the old location as it animates out.
+        */}
+        <CSSTransition
+          key={location.key}
+          classNames="fade"
+          timeout={300}
         >
-            <Route path="/">
+          <Switch location={location}>
+            <Route exact path="/">
               <div className={`IntroPanel${(entranceAnimation) ? ' Enter' : ''}`}>
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={downloadResume}>
                   <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
-                  <h2 className="AlignChildrenVertical">
-                    <span>and I'm a </span>
-                    <span className={`WordCycler${(isAnimationComplete()) ? ' Settle' : ''}${(fastForward) ? ' FastForward' : ''}`}>
-                      <span className="WordCyclePlane">{currentAdjective}</span>
-                    </span> 
-                    <span>developer.</span>
-                  </h2>
                   
                   <button type="button" className="HomeCTA">R&eacute;sum&eacute;</button>
                   
                 </div>
                 <Link className="CTAContainer PortfolioLinkContainer" to="/portfolio">
+                  <h2>I'm a developer</h2>
                   <button type="button" className="HomeCTA SecondaryCTA">Portfolio</button>
                 </Link>
               </div>
@@ -93,7 +98,7 @@ function App() {
             </Route>
             <Route path="/portfolio">
               <div className="WorkPanel">
-                <video autoPlay loop mute src="dawnofwar.mp4"></video>
+                {/*<video autoPlay loop mute src="dawnofwar.mp4"></video>*/}
                 <h1>I made <a href="https://www.dawnofwar.com">www.dawnofwar.com</a></h1>
                 <h2>I delivered numerous features on <a href="https://www.hardrocksocialcasino.com">www.hardrocksocialcasino.com</a></h2>
                 <h3>The same engine as <a href="https://play.star.com.au">play.star.com.au</a></h3>
@@ -130,11 +135,14 @@ function App() {
                 </ul>
               </div>
             </Route>
-          </AnimatedSwitch>
-        </Router>
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>        
 
     </div>
   );
 }
 
-export default App;
+const BrowserApp = () => <Router><App/></Router>
+
+export default BrowserApp;
