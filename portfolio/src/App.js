@@ -138,18 +138,14 @@ function App() {
                     <video loop mute src="dawnofwar.mp4"></video>*/}
                   </div>
                 </div>
-                <div className={`CTAContainer ${CTAEffect}`} onClick={downloadResume}>
-                  <button type="button" className="HomeCTA NoMargin">R&eacute;sum&eacute;</button>
-                </div>
 
                 <div className={`CTAContainer SocialLinks`}>
-                  <h1>Let's chat! We have so much in common!</h1>
                   <ul className="SocialLinks">
                     <li>
-                      <SocialIcon url="https://www.linkedin.com/in/agamedesigner/" />
+                      <SocialIcon url="/resume.pdf"/>
                     </li>
                     <li>
-                      <SocialIcon url="https://www.facebook.com/josh.wood.12576" />
+                      <SocialIcon url="https://www.linkedin.com/in/agamedesigner/" />
                     </li>
                     <li>
                       <SocialIcon url="mailto:gdjoshwood@gmail.com" />
