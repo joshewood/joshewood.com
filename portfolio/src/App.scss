@@ -2,6 +2,10 @@
   transition: all .225s cubic-bezier(0.03, 1.24, 0.54, 1.24);
 }
 
+html {
+  overflow: hidden;
+}
+
 a {
   color: #D8315B;
   cursor: pointer;
@@ -13,6 +17,7 @@ a {
 .App {
   text-align: center;
   user-select: none;
+  overflow: hidden;
   &:before {
     content: '';
     position: absolute;
@@ -24,7 +29,51 @@ a {
     opacity: 0.2;
     background: url('/backgrounds/app_background0.jpeg');
     background-size: cover;
+    background-position: 0% 50%;
+    transition: all 1s cubic-bezier(0.21, 0.44, 0.9, 0.94);
   }
+
+  &.Home:before {
+    background-position: 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #222, transparent 15%, transparent 85%, #222);
+    transform-origin: center;
+    z-index: -1;
+  }
+}
+
+.slide-enter,
+.slide-exit, .slide-enter-done, .slide-exit-done {
+  transition: transform 450ms cubic-bezier(0.48, 0.17, 0.88, 0.76);
+}
+
+.slide-enter {
+  transform: translateY(100%);
+  transition-delay: .45s;
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateY(0%);
+}
+
+.slide-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(0%);
+}
+
+.slide-exit-active {
+  transform: translateY(-100%);
 }
 
 .CTAContainer {
@@ -52,7 +101,7 @@ a {
     bottom: 0;
     transform: scale(0);
     transform-origin: center;
-    background: hsla(345, 68%, 22%, 1);
+    background: hsla(245, 68%, 22%, 1);
     z-index: 1;
     pointer-events: none;
     border-radius: 100%; 
@@ -62,6 +111,9 @@ a {
 
   &:hover {
     cursor: pointer;
+    & + .BorderDecoration {
+      background: linear-gradient(to right, transparent, #3E92CC 20%, #3E92CC 80%, transparent);;
+    }
     &:after {
       opacity: 0.8;
       filter: saturate(200%);
@@ -74,7 +126,8 @@ a {
       box-shadow: none;
       outline: 6px solid #3E92CC;
       color:  #3E92CC;
-      border-color: #D8315B;
+      border-bottom-color: #fafafa;
+      border-left-color: #fafafa;
       text-shadow: 1px 1px 0 #222, -1px 1px 0 #222, 1px -1px 0 #222, -1px -1px 0 #222;  
       letter-spacing: 8px;
     }
@@ -93,24 +146,44 @@ a {
     bottom: 0;
     transform: scale(1);
     transform-origin: center;
-    background: linear-gradient(to left, #5e1225, transparent, #5e1225);
-    z-index: 0;
+    background: linear-gradient(to left, #18125e, transparent, #18125e);
+    z-index: -1;
     pointer-events: none;
     opacity: 0.4;
     background-position-x: 0;
     animation: BackgroundFlash 100s cubic-bezier(0.1, 0.51, 0.9, 0.63) infinite;
   }
+
+  &.Short {
+    width: 20em;
+  }
+
+  video {
+    width: 16em;
+  }
+
+  a {
+    color: #fafafa;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  .VideoGallery {
+    display: flex;
+  }
 }
 
 @keyframes TextAttract {
   0% {
-    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.15);
   }
   50% {
-    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0px 8px 6px rgba(255, 255, 255, 0.15);
   }
   100% {
-    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -149,27 +222,16 @@ a {
     transition-timing-function: cubic-bezier(0.24, -0.04, 1, -0.28);
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to right, #222, transparent 15%, transparent 85%, #222);
-    transform-origin: center;
-    z-index: -1;
-  }
 
   &.Enter {
     &:before {
-      transform: scale(1);
+      transform: scale(0);
     }
   }
 }
 
 .HomeCTA {
-  background: #D8315B;
+  background: #3f31d8;
   border: 1px solid transparent;
   box-shadow: 0px 0px 0px 1px #3E92CC;
   color: #222;
@@ -187,17 +249,20 @@ a {
   width: 8em;
   height: 2em;
   transition: all .225s cubic-bezier(0.1, 0.51, 0.9, 0.63), letter-spacing 0.5s cubic-bezier(0.15, 0.46, 0.75, 1.13);
+  &.NoMargin {
+    margin-top: 0;
+  }
 }
 
 .BorderDecoration {
   left: 0;
-  position: absolute;
+  margin: 0 auto;
   transform: scale(0);
   transform-origin: center;
   bottom: 0;
   border: none;
   height: 1px;
-  width: 100%;
+  width: 20em;
   background: linear-gradient(to right, transparent, #3E92CC, transparent);
 }
 
@@ -222,7 +287,7 @@ a {
 }
 
 .SecondaryCTA {
-  background: hsla(345, 28%, 52%, 1);
+  background: hsla(245, 28%, 52%, 1);
   width: 12em;
   z-index: 1;
 }
@@ -301,9 +366,16 @@ h2 {
 }
 
 .WorkPanel {
-  padding: 5vh 0;
-  background: #222;
+  padding: 0 0;
   color: #FFFAFF; 
+  display: flex;
+  height:100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  .CTAContainer {
+    max-height: 10em;
+  }
 }
 
 .DogPanel {
