@@ -85,6 +85,7 @@ function App() {
             <div>
               <div className={`IntroPanel${(entranceAnimation) ? ' Enter' : ''}`}>
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={downloadResume}>
+                  <hr className="BorderDecoration Top"/>  
                   <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
                   
                   <button type="button" className="HomeCTA">R&eacute;sum&eacute;</button>
@@ -92,6 +93,7 @@ function App() {
                 </div>
                 
                 <Link className="CTAContainer PortfolioLinkContainer" to="/portfolio">
+                  <hr className="BorderDecoration Top"/>  
                   <h2>I'm a developer</h2>
                   <button type="button" className="HomeCTA SecondaryCTA">Portfolio</button>
                   <hr className="BorderDecoration"/>
@@ -104,12 +106,14 @@ function App() {
               <div className="WorkPanel">
                 
                 <div className={`CTAContainer Short ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.dawnofwar.com')}}>
+                  <hr className="BorderDecoration Top"/>  
                   <a href="https://www.dawnofwar.com">www.dawnofwar.com</a>
                   <video loop mute src="dawnofwar.mp4"></video>
                   <hr className="BorderDecoration"/>
                 </div>
                 
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.hardrocksocialcasino.com')}}>
+                  <hr className="BorderDecoration Top"/>  
                   <a className="SupportHeader" href="#">Greentube Pro</a>
                   <div className="GreentubeProTooltip">
                     <ul className="GreentubeProClients">
@@ -141,7 +145,8 @@ function App() {
                   <hr className="BorderDecoration"/>
                 </div>
 
-                <div className={`CTAContainer SocialLinks`}>
+                <div className={`CTAContainer Short SocialLinks`}>
+                  <hr className="BorderDecoration Top"/>  
                   <ul className="SocialLinks">
                     <li>
                       <SocialIcon url="/resume.pdf"/>
