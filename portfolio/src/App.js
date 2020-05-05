@@ -88,14 +88,14 @@ function App() {
                   <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
                   
                   <button type="button" className="HomeCTA">R&eacute;sum&eacute;</button>
-                  
+                  <hr className="BorderDecoration"/>  
                 </div>
-                <hr className="BorderDecoration"/>
+                
                 <Link className="CTAContainer PortfolioLinkContainer" to="/portfolio">
                   <h2>I'm a developer</h2>
                   <button type="button" className="HomeCTA SecondaryCTA">Portfolio</button>
+                  <hr className="BorderDecoration"/>
                 </Link>
-                <hr className="BorderDecoration"/>
               </div>
               
             </div>
@@ -106,10 +106,11 @@ function App() {
                 <div className={`CTAContainer Short ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.dawnofwar.com')}}>
                   <a href="https://www.dawnofwar.com">www.dawnofwar.com</a>
                   <video loop mute src="dawnofwar.mp4"></video>
+                  <hr className="BorderDecoration"/>
                 </div>
                 
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.hardrocksocialcasino.com')}}>
-                  <a href="#">Greentube Pro</a>
+                  <a className="SupportHeader" href="#">Greentube Pro</a>
                   <div className="GreentubeProTooltip">
                     <ul className="GreentubeProClients">
                       <li className="">
@@ -137,6 +138,7 @@ function App() {
                     <video loop mute src="dawnofwar.mp4"></video>
                     <video loop mute src="dawnofwar.mp4"></video>*/}
                   </div>
+                  <hr className="BorderDecoration"/>
                 </div>
 
                 <div className={`CTAContainer SocialLinks`}>
@@ -154,6 +156,7 @@ function App() {
                       <SocialIcon url="https://github.com/joshewood/"/>
                     </li>
                   </ul>
+                  <hr className="BorderDecoration"/>
                 </div>
               </div>
             </Route>
