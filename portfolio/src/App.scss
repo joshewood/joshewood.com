@@ -148,6 +148,7 @@ button {
     h1:before, h2:before, a:before {
       opacity: 0.5;
     }
+
   }
   &.Engaged:before {
     transform: scale(2);
@@ -175,17 +176,33 @@ button {
     width: 20em;
   }
 
+  img {
+    mix-blend-mode: luminosity;
+    margin-top: 0.4em;
+    opacity: 1;
+  }
+
   video {
-    width: 20em;
-    height: 12em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: grayscale(100%);
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 
   a {
-    color: #fafafa;
+    color: #ffeeb9;
     text-decoration: none;
     font-weight: 600;
     display: block;
     margin-bottom: 1em;
+    text-shadow: 2px 2px 2px #222;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 1.2px;
+    background: linear-gradient(to left, transparent 10%, rgba(50,50,50,0.6), transparent 90%);
   }
 
   .VideoGallery {
@@ -193,10 +210,32 @@ button {
   }
 
   .SupportHeader {
-    
     font-weight: 700;
   }
 }
+
+.InnerCard {  
+  &:hover {
+
+    video {
+      opacity: 0.6;
+      filter: grayscale(0);
+      object-fit: cover;
+    }
+
+    img {
+      opacity: 0.2;
+    }
+
+    a {
+      color: #222;
+      font-weight: 800;
+      text-shadow: 2px 2px 1px yellow, -2px -2px 1px yellow, -2px 2px 1px yellow, 2px -2px 1px yellow;
+    }
+
+  }
+}
+
 
 @keyframes TextAttract {
   0% {
@@ -362,53 +401,6 @@ h1:before, h2:before, a:before {
   font-weight: 800;
 }
 
-.WordCycler {
-  position: relative;
-  height: 1.4em;
-  width: 8em;
-  color: #0A2463;
-  display: inline-flex;
-  border-radius: 4em;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.8em;
-  transform-style: preserve-3d;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #FFFAFF;
-  padding: 0 0.8em;
-  margin: 0 0.4em;
-  white-space: nowrap;
-  top: 4px;
-  &.FastForward {
-    .WordCyclePlane {
-      animation-duration: 250ms;
-    }
-  }
-  &.Settle {
-    animation: none;
-    .WordCyclePlane {
-      animation: none;
-    }
-  }
-}
-
-
-
-.WordCyclePlane {
-  animation: phase 1s infinite cubic-bezier(0.1, 0.51, 0.9, 0.63);
-}
-
-@keyframes phase {
-  0% { transform: translate(0, -2em); }
-  10% { transform: translate(0, 0); }
-  90%   { transform: translate(0, 0); }
-  100% {
-    transform: translate(0, 2em);
-  }
-}
-
 .WorkPanel {
   padding: 0 0;
   color: #FFFAFF; 
@@ -433,17 +425,7 @@ h1:before, h2:before, a:before {
     font-weight: 200;
     letter-spacing: 1.2px;
   }
-}
 
-.DogPanel {
-  padding: 5vh 0;
-}
-
-.Doggo {
-  max-width: 100%;
-  margin: -4em 0;
-  z-index: -1;
-  position: relative;
 }
 
 @media (max-width: 695px) {
@@ -461,7 +443,7 @@ ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   li {
     margin: 0 1em;
   }
@@ -481,8 +463,21 @@ ul {
 
 .SocialLinks {
   padding-left: 0;
+  filter: sepia(1) hue-rotate(175deg);
+  a {
+    opacity: 0.5;
+    border-radius: 2em;
+  }
+  a:hover {
+    box-shadow: 0 0 2px 3px yellow;
+    opacity: 1;
+  }
 }
 
 .GreentubeProClients {
   padding-left: 0;
+  li {
+    flex: 0 0 30%;
+    margin: 0 auto;
+  }
 }

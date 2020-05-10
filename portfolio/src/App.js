@@ -66,42 +66,41 @@ function App() {
             <Route path="/portfolio">
               <div className="WorkPanel">
                 
-                <div className={`CTAContainer Short ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.dawnofwar.com')}}>
+                <div className={`CTAContainer Short InnerCard ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.dawnofwar.com')}}>
                   <hr className="BorderDecoration Top"/>  
                   <a href="https://www.dawnofwar.com">www.dawnofwar.com</a>
-                  <video loop mute src="dawnofwar.mp4"></video>
+                  <img src="/portfolio/thumbnail-dawn-of-war.png"/>
+                  <video className="VideoPreview" autoPlay loop muted src="/dawnofwar.mp4"></video>
                   <hr className="BorderDecoration"/>
                 </div>
                 
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={() => {window.location.assign('https://www.hardrocksocialcasino.com')}}>
                   <hr className="BorderDecoration Top"/>  
-                  <a className="SupportHeader" href="#">Greentube Pro</a>
+                  <div className="SupportHeader" >Greentube Pro</div>
                   <div className="GreentubeProTooltip">
                     <ul className="GreentubeProClients">
-                      <li className="">
-                        <a href=">www.hardrocksocialcasino.com">
-                          <div>www.hardrocksocialcasino.com</div>
-                          <video loop mute src="hardrock.mp4"></video>
+                      <li className="InnerCard">
+                        <a href="https://www.hardrocksocialcasino.com">
+                          <div>hardrocksocialcasino.com</div>
+                          <img src="/portfolio/thumbnail-hard-rock.png"/>
+                          <video className="VideoPreview" autoPlay loop muted src="/hardrock.mp4"></video>
                         </a>
                       </li>
-                      <li className="">
-                        <a href=">online.foxwoods.com">
+                      <li className="InnerCard">
+                        <a href="https://online.foxwoods.com">
                           <div>online.foxwoods.com</div>
-                          <video loop mute src="foxwoods.mp4"></video>
+                          <img src="/portfolio/thumbnail-foxwoods.png"/>
+                          <video className="VideoPreview" autoPlay loop muted src="/foxwoods.mp4"></video>
                         </a>
                       </li>
-                      <li className="">
-                        <a href=">play.star.com.au">
+                      <li className="InnerCard">
+                        <a href="https://play.star.com.au">
                           <div>play.star.com.au</div>
-                          <video loop mute src="star.mp4"></video>
+                          <img src="/portfolio/thumbnail-starplay.png"/>
+                          <video className="VideoPreview" autoPlay loop muted src="/star.mp4"></video>
                         </a>
                       </li>
                     </ul>
-                  </div>
-                  <div className="VideoGallery">
-                    {/*<video loop mute src="dawnofwar.mp4"></video>
-                    <video loop mute src="dawnofwar.mp4"></video>
-                    <video loop mute src="dawnofwar.mp4"></video>*/}
                   </div>
                   <hr className="BorderDecoration"/>
                 </div>
