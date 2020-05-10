@@ -14,19 +14,8 @@ import {
 } from "react-transition-group";
 import './App.scss';
 
-const adjectives = [
-  'thoughtful', 'creative', 'persistent', 
-  'passionate', 'software', 'humble', 
-  'perceptive', 'friendly', 'web', 
-  'game', 'versatile', 'positive', 
-  'professional', 'resourceful', 'front-end', 
-  'back-end', 'senior', 'driven'
-];
-const consumeAdjective = () => adjectives.sort(() => { return 0.5 - Math.random();}).pop();
-const isAnimationComplete = () => (adjectives.length === 0);
 function App() {
   const [entranceAnimation, beginEntrance] = useState(false);
-  const [currentAdjective, setAdjective] = useState(consumeAdjective());
   const [fastForward, setFastForward] =  useState(false);
   const [CTAEffect, changeCTAEffect] = useState('Empty');
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -44,37 +33,10 @@ function App() {
   useEffect(() => {
     setHasLoaded(true);
     beginEntrance(true);
-    
-    let iteration = 0;
-    let interval;
-    const tick = () => {
-      iteration++;
-      const randomAdjective = consumeAdjective();
-      setAdjective(randomAdjective);
-      if (isAnimationComplete()) {
-        clearInterval(interval);
-        return;
-      }
-    }
-
-    interval = setInterval(() => {
-      if (iteration == 1) {
-        clearInterval(interval);
-        interval = setInterval(tick, 250);
-        setFastForward(true);
-      }
-      tick();
-    }, 1000)
   }, []);  
   let location = useLocation();
   return (<div className={`App${(hasLoaded) ? ' Loaded' : ''}${(location.pathname == '/') ? ' Home' : ''}`}>
       <TransitionGroup>
-        {/*
-          This is no different than other usage of
-          <CSSTransition>, just make sure to pass
-          `location` to `Switch` so it can match
-          the old location as it animates out.
-        */}
         <CSSTransition
           key={location.key}
           classNames="slide"
@@ -87,7 +49,6 @@ function App() {
                 <div className={`CTAContainer ResumeContainer ${CTAEffect}`} onClick={downloadResume}>
                   <hr className="BorderDecoration Top"/>  
                   <h1>Hey, my name's <span className="Accent">Josh</span>,</h1>
-                  
                   <button type="button" className="HomeCTA">R&eacute;sum&eacute;</button>
                   <hr className="BorderDecoration"/>  
                 </div>
@@ -176,27 +137,3 @@ function App() {
 const BrowserApp = () => <Router><App/></Router>
 
 export default BrowserApp;
-
-              // <div className="SummaryPanel">
-              //   <h1>I have been <span className="Accent">building</span> software my whole life.</h1>
-              //   <h2>Love it when a <span className="Accent">plan</span> comes together.</h2>
-              //   <h2>Worked alongside <span className="Accent">brilliant</span> people.</h2>
-              //   <h2>Crave <span className="Accent">collaboration</span>.</h2>
-              // </div>
-              // <div className="ConnectPanel">
-              //   <h1>Let's chat! We have so much in common!</h1>
-              //   <ul className="SocialLinks">
-              //     <li>
-              //       <SocialIcon url="https://www.linkedin.com/in/agamedesigner/" />
-              //     </li>
-              //     <li>
-              //       <SocialIcon url="https://www.facebook.com/josh.wood.12576" />
-              //     </li>
-              //     <li>
-              //       <SocialIcon url="mailto:gdjoshwood@gmail.com" />
-              //     </li>
-              //     <li>
-              //       <SocialIcon url="https://www.instagram.com/maremmazero/"/>
-              //       </li>
-              //   </ul>
-              // </div>
